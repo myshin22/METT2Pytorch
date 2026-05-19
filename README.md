@@ -1,13 +1,13 @@
 # METT — R → PyTorch 
 R 패키지 [`METT`](https://sites.google.com/view/yeonheepark/research) (Park 2021; Park & Chen 2023,
 원본은 Yeonhee Park 교수님 사이트에서 Google Drive로 배포)의 핵심 `METT2E`
-(exponential survival) 함수를 PyTorch로 포팅합니다.
+(exponential survival) 함수를 PyTorch로 변환합니다.
 **Median Event Time Test** 기반 단일군 phase II 임상시험 2단계 설계 (Park 2021,
 Park & Chen 2023, PLOS ONE) 의 최적 설계 탐색을 가속합니다.
 
 ## Highlights
 
-- **알고리즘 동등성**: R 원본을 ground-truth oracle로 두고 5단계 검증
+- **알고리즘 동등성**: R 원본을 ground-truth oracle로 두고 검증
   (KM median 0 차이, MC 비교 2σ 이내, cell-level α̂/β̂ 일치)
 - **속도**:
   - i9-14900K CPU: R 대비 약 **36,000× 평균 가속** (Park & Chen Table 2 nsim=1000)
@@ -17,15 +17,14 @@ Park & Chen 2023, PLOS ONE) 의 최적 설계 탐색을 가속합니다.
 ## Quickstart
 
 ```bash
-# YOUR_GITHUB_USER 자리에 본인 GitHub 사용자명, REPO 자리에 레포 이름
-git clone https://github.com/YOUR_GITHUB_USER/REPO.git
+git clone https://github.com//REPO.git
 cd REPO
 
-# conda env 구성 (~5–15분)
+# conda env 구성
 conda env create -f METT/environment.yml
 conda activate mett
 
-# 노트북 실행 (5개 검증 스텝 전체)
+# 노트북 실행
 conda run -n mett --no-capture-output jupyter nbconvert \
     --to notebook --execute --inplace \
     --ExecutePreprocessor.timeout=1800 \
@@ -56,7 +55,7 @@ conda run -n mett --no-capture-output python METT/python/generate_figures.py
     │   ├── mett2e.py             # mett2e + mett2e_cell_by_cell
     │   ├── oracles.py            # R(rpy2) / lifelines KM 래퍼
     │   ├── validation.py         # 검증 헬퍼
-    │   └── generate_figures.py   # 5종 figure 생성
+    │   └── generate_figures.py   # figure 생성
     ├── figures/           # PNG 산출물
     └── environment.yml    # conda env 정의 (Python + R + 의존성)
 ```
