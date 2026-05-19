@@ -27,12 +27,16 @@ htmlcov/
 .ipynb_checkpoints/
 
 # ── R ──────────────────────────────────────────────
+# Park 교수님 사이트에서 받아 로컬에 배치하는 원본 R 패키지 (배포물 미포함)
+R/
+man/
+DESCRIPTION
+NAMESPACE
 .Rhistory
 .RData
 .Rproj.user/
 *.Rcheck/
 *.tar.gz
-METT/build/
 
 # ── IDE / OS ───────────────────────────────────────
 .vscode/

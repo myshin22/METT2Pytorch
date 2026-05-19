@@ -57,12 +57,14 @@ plt.savefig(FIG / "speedup.png", dpi=80); plt.close()
 
 # === Viz 2: MC noise histogram ===
 print("[2/4] MC noise histogram (~10s)...", flush=True)
+from opres import batched_opres_exp
+
 def mc_alphahats(nsim_h_, n_trials=200):
-    # 수렴 cell (n₁=12, n=30, λ=7.0) — Section 4.6 nsim≥2K에서 수렴하는 cell
+    # L1 R picked cell (n₁=15, n=22, λ=8.0) — Section 4.4 R i9 측정 결과 (EN=16.76, valid)
     out = []
     for seed in range(n_trials):
         gen = torch.Generator().manual_seed(seed)
-        r = batched_opres_exp(6, 12, 6, [7.0], 12, [30], 1.0, 12, nsim_h_, generator=gen)
+        r = batched_opres_exp(6, 12, 6, [8.0], 15, [22], 1.0, 12, nsim_h_, generator=gen)
         out.append(float(r["phat"][0, 0]))
     return np.array(out)
 
@@ -77,7 +79,7 @@ ax.axvspan(0.05, 0.15, alpha=0.12, color="gray", label="eps1 window (target α=0
 ax.axvline(a_1k.mean(),  color="#3366aa", linestyle="--", linewidth=1)
 ax.axvline(a_10k.mean(), color="#77aa33", linestyle="--", linewidth=1)
 ax.set_xlabel("α̂ estimate"); ax.set_ylabel("frequency")
-ax.set_title("MC noise distribution at converged cell (n₁=12, n=30, λ=7.0), 200 trials")
+ax.set_title("MC noise distribution at L1 R picked cell (n₁=15, n=22, λ=8.0), 200 trials")
 ax.legend(); plt.tight_layout()
 plt.savefig(FIG / "mc_noise.png", dpi=80); plt.close()
 
