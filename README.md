@@ -69,7 +69,7 @@ conda run -n mett --no-capture-output python METT/python/generate_figures.py
 - Park, Y.* (2021). Optimal Two-Stage Design of Single arm Phase II Clinical Trials based on Median Event Time Test. PLoS One. 16(2): e0246448
 - Park, Y.* and Chen, Y.† (2023). Sample Size Determination and Evaluation for Two-stage Adaptive Designs of Single-arm Clinical Trials based on Median Event Time Test. Contemporary Clinical Trials Communications. 
 
-상세 검증 절차·결과·설계 결정은 [`METT/python/01_validation.ipynb`](METT/python/01_validation.ipynb) 의 5단계 라이브 검증 노트북 참조.
+상세 검증 절차·결과·설계 결정은 [`METT/python/01_validation.ipynb`](METT/python/01_validation.ipynb) 의 검증 노트북 참조.
 
 ## License
 
